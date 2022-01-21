@@ -1,0 +1,34 @@
+#wrapper {
+    .icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 11px;
+        .icon {
+            &:nth-child(n+1) {
+                margin-right: 5px;
+            }
+            background-color: $main-light-clr;
+            width: 20px;
+            height: 20px;
+            padding: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: $main-clr;
+            font-size: $main-font-size;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .delete__icon {
+            background-color: rgb(233, 36, 36);
+        }
+        .bg__yellow {
+            background-color: #ffc107
+        }
+        .bg__green {
+            background-color: #24e451;
+        }
+    }
+}

@@ -1,0 +1,94 @@
+body {
+    #wrapper {
+        .modal.modal__open {
+            visibility: visible;
+            transition: $main-transition;
+            opacity: 1;
+            top: 0 !important;
+        }
+        .modal {
+            position: absolute;
+            top: -80px;
+            left: 0;
+            z-index: 999;
+            /*  visibility: visible; */
+            opacity: 1;
+            width: 100%;
+            height: 100%;
+            transition: $main-transition;
+            &__main {
+                max-width: 500px;
+                min-height: 380px;
+                margin: 1.75rem auto;
+                display: flex;
+                align-items: center;
+                position: relative;
+                transition: $primary-transition;
+            }
+            &__content {
+                border: 0;
+                width: 100%;
+                border-radius: 2px;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                background-color: $main-clr;
+                border-radius: 0.3rem;
+                outline: 0;
+            }
+            &__icon {
+                padding-top: 40px;
+                width: 100%;
+                &__img {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: auto;
+                    width: 80px;
+                    height: 80px;
+                    border: 1px solid #e4ebf4;
+                    background: #f7f8fb;
+                }
+            }
+            &__title {
+                padding-top: 30px;
+                text-align: center;
+                font-weight: $secondary-font-weight;
+                font-size: $primary-font-size;
+                line-height: $main-line-height;
+            }
+            &__btns {
+                text-align: center;
+                padding-top: 30px;
+                margin-bottom: 30px;
+                .btn {
+                    font-size: 12px;
+                    font-weight: $primary-font-weight;
+                    outline: none;
+                    cursor: pointer;
+                    border-radius: 2px;
+                    text-transform: uppercase;
+                    width: 150px;
+                    height: 46px;
+                    padding: 13px 16px;
+                    transition: $main-transition;
+                    &__cancel {
+                        background: $main-clr;
+                        color: #8f9ca7;
+                        border: 1px solid #e3eaf3;
+                        margin-right: 16px;
+                    }
+                    &__delete {
+                        background-color: $secondary-clr;
+                        color: $main-clr;
+                        border: 1px solid $secondary-clr;
+                        &:hover {
+                            background-color: $third-clr !important;
+                            border: 1px solid $third-clr !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
