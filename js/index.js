@@ -1,13 +1,6 @@
 let body = document.querySelector('.body');
 let heading = document.querySelector('.heading')
-let dataNames = document.querySelectorAll('.data__name')
-let addBtns = document.querySelectorAll('.add__icon')
-let editBtn = document.querySelector('.edit__icon')
-let deleteBtn = document.querySelector('.delete__icon')
 let modalSection = document.querySelector('.modal__section')
-let modalClose = document.querySelector('.btn__cancel')
-let modalBtnDelete = document.querySelector('.btn__delete')
-
 
 
 
@@ -29,7 +22,6 @@ function uniqieId() {
         return v.toString(16);
     });
 }
-
 var dataId = uniqieId();
 
 const AddType = {
@@ -45,9 +37,7 @@ const DelType = {
     id: dataId
 }
 
-
-
-const Checker = (input, { add = null, del = null, update = null } = {}) => {
+const Checker = (input, { add = null, del = null, update = null, modal = null } = {}) => {
     if (input.id == 'root') {
         if (update !== null) {
             update['value'] = document.querySelector(`.data__name__${update.id}`).innerText
@@ -62,9 +52,9 @@ const Checker = (input, { add = null, del = null, update = null } = {}) => {
             <div class="data__details">
                 <span class="data__name data__name__bg" contenteditable="${input.isEditable}">${input.value}</span>
                 <div class="icons">
-                    <span class="add__icon icon" onclick="Checker(root, {add: {id: '${input.id}', value: {id:'${uniqieId()}',value:'',children:[],isEditable: true}}})"><i class="fas fa-plus"></i></span>
+                    <span class="add__icon icon" onclick="Checker(root, {add: {id: '${input.id}', value: {id:'${uniqieId()}',value:'',children:[],isEditable: true,isModal:false}}})"><i class="fas fa-plus"></i></span>
                     <span class="edit__icon icon"><i class="fas fa-pen"></i></span>
-                    <span class="delete__icon icon" onclick="Checker(root, {isModal:true})"><i class="fas fa-times"></i></span>
+                    <span class="delete__icon icon" onclick="Checker(root, {modal :{value: {id:'${input.id}',value:'${input.value}', isModal:true}}})"><i class="fas fa-times"></i></span>
                 </div>
             </div>
             </li>`
@@ -85,15 +75,12 @@ const Checker = (input, { add = null, del = null, update = null } = {}) => {
         <div class="icons">
         <span class="verify__icon icon bg__yellow" onclick="Checker(root, {del: {id: '${input.id}'}})"><i class="fas fa-times"></i></span>
         <span class="edit__icon icon bg__green" onclick="Checker(root, {update: {id: '${input.id}',isEditable: false}})"><i class="fas fa-check"></i></span>
-
         </div>
         </div>
         </li>`
     }
-    if (input.isModal == false) {
-        if (input.id !== 'root') {
-            console.log('ssss')
-            modalSection.innerHTML += `<div class="modal modal__open">
+    if (modal !== null) {
+        modalSection.innerHTML += `<div class="modal">
             <div class="modal__main">
                 <div class="modal__content">
                     <div class="modal__icon">
@@ -102,16 +89,20 @@ const Checker = (input, { add = null, del = null, update = null } = {}) => {
                         </div>
                     </div>
                     <p class="modal__title">
-                        Are you sure you want to delete this ${input.value}
+                        Are you sure you want to delete this ${modal.value.value}
                     </p>
                     <div class="modal__btns">
-                        <button class="btn btn__cancel" type="button" data-dismiss="modal">Cancel</button>
-                        <button class="btn btn__delete"  type="button"  onclick="Checker(root, {del: {id: '${input.id}'}})">Delete</button>
+                        <button class="btn btn__cancel" type="button" onclick="Checker(root, {del: {id: ' '}})">Cancel</button>
+                        <button class="btn btn__delete"  type="button"  onclick="Checker(root, {del: {id: '${modal.value.id}'}})">Delete</button>
                     </div>
                 </div>
             </div>
-        </div> `
-        }
+        </div>`
+        setTimeout(() => {
+            let modalClass = document.querySelector('.modal')
+            modalClass.classList.add('modal__open')
+        }, 100)
+
     }
 
 
@@ -140,43 +131,6 @@ const Checker = (input, { add = null, del = null, update = null } = {}) => {
     })
 }
 
-/* function ModalOpen() {
-    console.log('sss')
-    modalSection.innerHTML += `
-    <div class="modal modal__open">
-    <div class="modal__main">
-        <div class="modal__content">
-            <div class="modal__icon">
-                <div class="modal__icon__img">
-                    <img src="images/trash.svg" alt="">
-                </div>
-            </div>
-            <p class="modal__title">
-                Are you sure you want to delete this category
-            </p>
-            <div class="modal__btns">
-                <button class="btn btn__cancel" type="button" data-dismiss="modal">Cancel</button>
-            
-            </div>
-        </div>
-    </div>
-    </div>
-   `
-} */
-/* function ModalOpen() {
-    modalOpen.classList.add('modal__open')
-}
-
-modalClose.onclick = () => {
-    modalOpen.classList.remove('modal__open')
-} */
-
-
 
 
 Checker(root)
-
-/* Checker(root, { add: AddType }) */
-// Checker(root, { del: DelType })
-
-/* console.log(root.children[0]) */

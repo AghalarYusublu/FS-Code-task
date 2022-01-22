@@ -243,7 +243,13 @@ body #wrapper .body .data__details .data__name__bg {
   background-color: #24e451;
 }
 
-body #wrapper .modal.modal__open {
+body #wrapper .modal__section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+body #wrapper .modal__section .modal.modal__open {
   visibility: visible;
   -webkit-transition: all 0.4s linear;
   transition: all 0.4s linear;
@@ -251,20 +257,20 @@ body #wrapper .modal.modal__open {
   top: 0 !important;
 }
 
-body #wrapper .modal {
+body #wrapper .modal__section .modal {
   position: absolute;
   top: -80px;
   left: 0;
   z-index: 999;
-  /*  visibility: visible; */
-  opacity: 1;
+  visibility: hidden;
+  opacity: 0;
   width: 100%;
   height: 100%;
   -webkit-transition: all 0.4s linear;
   transition: all 0.4s linear;
 }
 
-body #wrapper .modal__main {
+body #wrapper .modal__section .modal__main {
   max-width: 500px;
   min-height: 380px;
   margin: 1.75rem auto;
@@ -279,7 +285,7 @@ body #wrapper .modal__main {
   transition: all 0.3s ease-out;
 }
 
-body #wrapper .modal__content {
+body #wrapper .modal__section .modal__content {
   border: 0;
   width: 100%;
   border-radius: 2px;
@@ -296,12 +302,12 @@ body #wrapper .modal__content {
   outline: 0;
 }
 
-body #wrapper .modal__icon {
+body #wrapper .modal__section .modal__icon {
   padding-top: 40px;
   width: 100%;
 }
 
-body #wrapper .modal__icon__img {
+body #wrapper .modal__section .modal__icon__img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -318,7 +324,7 @@ body #wrapper .modal__icon__img {
   background: #f7f8fb;
 }
 
-body #wrapper .modal__title {
+body #wrapper .modal__section .modal__title {
   padding-top: 30px;
   text-align: center;
   font-weight: 700;
@@ -326,13 +332,13 @@ body #wrapper .modal__title {
   line-height: 24px;
 }
 
-body #wrapper .modal__btns {
+body #wrapper .modal__section .modal__btns {
   text-align: center;
   padding-top: 30px;
   margin-bottom: 30px;
 }
 
-body #wrapper .modal__btns .btn {
+body #wrapper .modal__section .modal__btns .btn {
   font-size: 12px;
   font-weight: 600;
   outline: none;
@@ -346,20 +352,20 @@ body #wrapper .modal__btns .btn {
   transition: all 0.4s linear;
 }
 
-body #wrapper .modal__btns .btn__cancel {
+body #wrapper .modal__section .modal__btns .btn__cancel {
   background: #fff;
   color: #8f9ca7;
   border: 1px solid #e3eaf3;
   margin-right: 16px;
 }
 
-body #wrapper .modal__btns .btn__delete {
+body #wrapper .modal__section .modal__btns .btn__delete {
   background-color: #fb3e6e;
   color: #fff;
   border: 1px solid #fb3e6e;
 }
 
-body #wrapper .modal__btns .btn__delete:hover {
+body #wrapper .modal__section .modal__btns .btn__delete:hover {
   background-color: #cc335a !important;
   border: 1px solid #cc335a !important;
 }
